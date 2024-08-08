@@ -1,0 +1,14 @@
+# Compiled Python bytecode
+*.py[cod]
+
+# JetBrains IDE
+.idea/
+
+Todo.egg-info/
+build
+.coverage
+
+.venv
+.env
+
+.sesskey

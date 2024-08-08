@@ -1,0 +1,132 @@
+[project]
+name = "Todo"
+version = "0.0.1"
+description = "FastHTML Todo list"
+authors = [
+	{name = "Allainclair Flausino dos Santos", email = "allainclair@gmail.com"},
+]
+
+requires-python = ">=3.12"
+readme = "README.md"
+license = {text = "MIT"}
+
+dependencies = [
+	"python-fasthtml>=0.2.4",
+]
+
+[project.optional-dependencies]
+test = [
+	"coverage",
+	"pytest",
+	"pytest-asyncio",
+	"pytest-recording",
+]
+lint = [
+	"ruff",
+	"mypy",
+]
+debug = [
+	"ipython",
+	"pytest-watcher",
+	"rich",
+]
+
+[tool.ruff]
+line-length = 80
+
+lint.select = [
+	"A",
+	"ARG",
+	"ANN",  # Take care if there is conflict with mypy.
+	"ASYNC",
+	"B",
+	"BLE",
+	"COM",
+	"C4",
+	"C90",
+	# "DTZ",  # https://docs.astral.sh/ruff/rules/#flake8-datetimez-dtz
+	"E",
+	"EM",
+	"EXE",
+	"F",
+	"FBT",
+	"FLY",
+	"FURB",
+	"G",
+	"I",
+	"ICN",
+	"INP",
+	"INT",
+	"ISC",
+	"LOG",
+	"N",
+	"PERF",
+	"PGH",
+	"PIE",
+	"PL",
+	"PT",
+	"PTH",
+	"PYI",
+	"Q",
+	"RET",
+	"RSE",
+	"RUF",
+	"S",
+	"SIM",
+	"SLOT",
+	"SLF",
+	"T10",
+	"T20",
+	"TCH",
+	"TD",
+	"TID",
+	"TRY",
+	"UP",
+	"W",
+	"YTT"
+]
+lint.ignore = [
+	"ANN101",  # https://docs.astral.sh/ruff/rules/missing-type-self/
+	"ANN401",  # https://docs.astral.sh/ruff/rules/any-type/
+
+	# The following rules may cause conflicts when used with the formatter: `COM812`.
+	"COM812",  # https://docs.astral.sh/ruff/rules/missing-trailing-comma/
+
+	# The following rules may cause conflicts when used with the formatter: `ISC001`
+	"ISC001",  # https://docs.astral.sh/ruff/rules/single-line-implicit-string-concatenation/
+
+	# Magic value used in comparison
+	"PLR2004",  # https://docs.astral.sh/ruff/rules/magic-value-comparison/
+
+	"S101",  # https://docs.astral.sh/ruff/rules/assert/"
+	"SIM108",  # https://docs.astral.sh/ruff/rules/if-else-block-instead-of-if-exp/
+
+	"TD003", # https://docs.astral.sh/ruff/rules/missing-todo-link/
+	"TD002", # https://docs.astral.sh/ruff/rules/missing-todo-author/
+
+	# The `format.indent-style="tab"` option is incompatible with `W191`, which lints against all uses of tabs
+	"W191",  # https://docs.astral.sh/ruff/rules/tab-indentation/
+]
+
+lint.mccabe.max-complexity = 5
+
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "tab"
+line-ending = "lf"  # Use `\n` line endings for all files
+
+[tool.ruff.lint.isort]
+case-sensitive = true
+split-on-trailing-comma = false
+
+[tool.mypy]
+strict = true
+
+[tool.pytest.ini_options]
+filterwarnings = ["error"]
+asyncio_mode = "auto"
+log_cli = true
+
+[tool.pytest-watcher]
+now = true
