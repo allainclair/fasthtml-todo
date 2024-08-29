@@ -14,21 +14,11 @@ dependencies = [
 	"python-fasthtml>=0.2.4",
 ]
 
-[project.optional-dependencies]
-test = [
+[tool.uv]
+dev-dependencies = [
 	"coverage",
 	"pytest",
 	"pytest-asyncio",
-	"pytest-recording",
-]
-lint = [
-	"ruff",
-	"mypy",
-]
-debug = [
-	"ipython",
-	"pytest-watcher",
-	"rich",
 ]
 
 [tool.ruff]
@@ -124,9 +114,11 @@ split-on-trailing-comma = false
 strict = true
 
 [tool.pytest.ini_options]
-filterwarnings = ["error"]
+asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "auto"
+filterwarnings = ["error"]
 log_cli = true
 
 [tool.pytest-watcher]
 now = true
+clear = true

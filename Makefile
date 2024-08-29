@@ -1,19 +1,13 @@
 clean:
-	rm -rf .venv
-	rm -rf build
-	rm -rf Todo.egg-info
+	rm -rf .venv uv.lock htmlcov .coverage .sesskey
 
-# Use this only in Dockerfile
-# Install packages in the system.
-install:
-	uv pip install --system --python=/usr/local/bin/python .
-	rm -rf MFC.egg-info/ build/
+install-python:
+	uv python install 3.12
 
-run-dev:
-	uvicorn --host 0.0.0.0 app.main:app --reload
 
-run:
-	uvicorn --host 0.0.0.0 app.main:app
+# Dev
+run-dev: install-python
+	uv run uvicorn --host 0.0.0.0 app.main:app --reload
 
 
 # Use these for local development without Docker.
