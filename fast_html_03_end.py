@@ -1,6 +1,6 @@
 """Show HTMX Button that shows a Card"""
 
-from fasthtml.common import Titled, fast_app, serve, Button, Section, Card, Header, Footer, H4, Strong, Nav, Ul, Li
+from fasthtml.common import Titled, fast_app, serve, Button, Section, Card, Header, Footer, H4, Strong, Nav, Ul, Li, Grid
 
 app, route = fast_app(live=True)
 
@@ -9,23 +9,18 @@ async def get():
 	return Titled(
 		"FastHTML app",
 		Section(
-			Nav(
-				Ul(
-					Li(
-						Button(
-						Strong("Show my important card"),
-							hx_get="/cards",
-							hx_target="#card-section",
-							hx_swap="beforeend",
-						),
-					),
-					Li(
-						Button(
-							Strong("Reset cards"),
-							hx_delete="/cards",
-							hx_target="#card-section",
-						),
-					),
+			Grid(
+			Button(
+				Strong("Show my important card"),
+					hx_get="/cards",
+					hx_target="#card-section",
+					hx_swap="beforeend",
+				),
+				Button(
+					"Reset cards",
+					hx_delete="/cards",
+					hx_target="#card-section",
+					cls="secondary"
 				),
 			),
 		),

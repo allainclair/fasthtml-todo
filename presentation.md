@@ -2,10 +2,10 @@
 
 ## Motivation
 
-- I first found [HTMX](https://htmx.org) and I saw we can build "React Like" (e.g. SPA) apps without JavaScript.
+- I first found [HTMX](https://htmx.org) and I saw we can build "React Like" (e.g. SPA but with SSR) apps without JavaScript.
 - HTMX is simple to understand and use.
-- It made me a lot more interested in Frontend apps because we can see it in the browser.
-- With a decent frontend knowledge we can build entire web apps.
+- It made me a lot more interested in Frontend apps because we can our apps in the browser.
+- With a decent frontend (basics) knowledge we can build entire web apps.
 - We can use HTMX + Jinja templates with Python, but...
 - I found [FastHTML](https://fastht.ml), and it simplifies HTMX+Python+Jinja. 
 

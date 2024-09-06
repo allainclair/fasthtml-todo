@@ -1,6 +1,6 @@
 """Show HTMX counter with Button"""
 
-from fasthtml.common import Titled, fast_app, serve, Div
+from fasthtml.common import Titled, fast_app, serve, Div, Section, Button, H3
 
 app, route = fast_app(live=True)
 
@@ -11,9 +11,14 @@ count = 0
 def get():
 	return Titled(
 		"FastHTML app",
-		Div(
-			"Click me to count: 0",
+		Section(
+			Button("Click me to count"),
 			hx_get="/add1",
+			hx_target="#counter",
+		),
+		Section(
+			H3("Counter: "),
+			H3("0", id="counter"),
 		),
 	)
 
@@ -21,7 +26,7 @@ def get():
 def get():
 	global count
 	count += 1
-	return f"Click me to count: {count}"
+	return H3(f"{count}")
 
 
 serve()

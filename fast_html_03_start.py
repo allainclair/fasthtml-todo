@@ -1,6 +1,6 @@
 """Show HTMX Button that shows a Card"""
 
-from fasthtml.common import Titled, fast_app, serve, Button, H3, Section
+from fasthtml.common import Titled, fast_app, Footer, Card, Header, H4, serve, Button, H3, Section, Grid, Strong
 
 app, route = fast_app(live=True)
 
@@ -12,22 +12,42 @@ def get():
 	return Titled(
 		"FastHTML app",
 		Section(
+			Grid(
 			Button(
-				"Click me to count",
-				hx_get="/add1",
-				hx_target="#counter",
+				Strong("Show my important card"),
+					hx_get="/cards",
+					hx_target="#card-section",
+					hx_swap="beforeend",
+				),
+				Button(
+					"Reset cards",
+					hx_delete="/cards",
+					hx_target="#card-section",
+					cls="secondary"
+				),
 			),
 		),
 		Section(
-			H3("Counter: 0", id="counter"),
+			id="card-section"
 		),
 	)
 
-@route("/add1")
-def get():
-	global count
-	count += 1
-	return f"Counter: {count}"
+@route("/cards")
+async def get():
+	return MyCard()
+
+
+@route("/cards")
+async def delete():
+	return ""
+
+
+def MyCard() -> Card:
+	return Card(
+		Header(H4("PicoCSS Card")),
+		"This is the body of the card",
+		Footer("Footer of the card"),
+	)
 
 
 serve()
