@@ -18,3 +18,7 @@ By default, FastHTML comes with:
 - [Picocss](https://picocss.com): Minimal CSS framework
 - [Uvicorn](https://www.uvicorn.org): Web server
 - [SQLite](https://www.sqlite.org): DB
+
+
+Session
+log user (current user from quart)
